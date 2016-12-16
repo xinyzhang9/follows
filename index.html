@@ -1,0 +1,26 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>rx test</title>
+</head>
+<body>	
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx.js'></script>
+
+
+	input <input type = 'text'>
+	<div id = 'output'></div>
+	<script>
+		var input = Rx.Observable.fromEvent(document.querySelector('input'),'keypress');
+
+		// input.delay(200)
+		// .subscribe(e => console.log(e.target.value));
+		input.throttleTime(1000)
+		.subscribe(e => console.log(e.target.value));
+
+	</script>
+</body>
+</html>
