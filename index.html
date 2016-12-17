@@ -2,24 +2,63 @@
 <head>
 	<meta charset="utf-8">
 	<title>rx test</title>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.async.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.coincidence.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.binding.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.time.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs-dom/2.0.7/rx.dom.js"></script>
+
 </head>
 <body>	
-	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx.js'></script>
 
 
-	input <input type = 'text'>
+
+	<input type = 'text'>
 	<div id = 'output'></div>
 	<script>
 		var input = Rx.Observable.fromEvent(document.querySelector('input'),'keypress');
 
 		// input.delay(200)
 		// .subscribe(e => console.log(e.target.value));
-		input.throttleTime(1000)
-		.subscribe(e => console.log(e.target.value));
+
+		// input.throttleTime(1000)
+		// .subscribe(e => console.log(e.target.value));
+
+		// pass on a new value
+		// input.map(event => event.target.value)
+		// .subscribe(value => console.log(value));
+
+		//pass on a new value by plucking it
+		// input.pluck('target','value')
+		// .subscribe(value => console.log(value));
+
+		//pass two previous values
+		// input.pluck('target','value').pairwise()
+		// .subscribe(value => console.log(value));
+
+		// only pass unique values through
+		input.pluck('target','value').distinct().subscribe(value => console.log(value));
+
+		/* Without key selector */
+		// var source = Rx.Observable.fromArray([
+		//         42, 24, 42, 24
+		//     ])
+		//     .distinct();
+
+		// var subscription = source.subscribe(
+		//     function (x) {
+		//         console.log('Next: ' + x.toString());
+		//     },
+		//     function (err) {
+		//         console.log('Error: ' + err);   
+		//     },
+		//     function () {
+		//         console.log('Completed');   
+		//     });
 
 	</script>
 </body>
