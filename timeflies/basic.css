@@ -1,0 +1,15 @@
+@font-face {
+			    font-family: myFirstFont;
+			    src: url(kai.ttf);
+			}
+
+
+#container {
+    overflow: hidden;
+}
+body{
+	background-color: black;
+	color: white;
+	font-family: myFirstFont,Helvetica, sans-serif;
+	font-size: 25px;
+}
