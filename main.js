@@ -16,7 +16,7 @@
 
     var text = '你知道什么是跟屁虫么？',
         container = document.querySelector('#container'),
-        mousemove = Rx.Observable.fromEvent(document, 'touchmove');
+        mousemove = Rx.Observable.fromEvent(document, 'mousemove');
 
     // Get the offset on mousemove from the container
     var mouseMoveOffset = mousemove.map(function (e) {
