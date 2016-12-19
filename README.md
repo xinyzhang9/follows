@@ -3,3 +3,6 @@ This is a simple text follower built with rxjs. Move your mouse to see what happ
 
 ## live
 https://xinyzhang9.github.io/follows/
+
+## technology
+rxjs
